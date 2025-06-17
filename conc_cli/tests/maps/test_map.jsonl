@@ -1,0 +1,3 @@
+{word: hello, symbol: ⍺⍺⍺}
+{word: world, symbol: ⍺⍺⍴}
+{word: gpt, symbol: ⍺⍺⍳}

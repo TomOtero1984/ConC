@@ -34,4 +34,9 @@ impl SymbolMap {
     pub fn lookup(&self, word: &str) -> Option<&str> {
         self.map.get(&word.to_lowercase()).map(|s| s.as_str())
     }
+    pub fn reverse_lookup(&self, symbol: &str) -> Option<&str> {
+        // Build a reverse lookup only once
+        self.map.iter()
+            .find_map(|(word, sym)| if sym == symbol { Some(word.as_str()) } else { None })
+    } 
 }
