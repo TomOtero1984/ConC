@@ -1,8 +1,13 @@
 use clap::{Parser, Subcommand};
 use std::fs;
-mod encoder;
-mod decoder;
-mod symbol_map;
+
+mod codec;
+use codec::encoder;
+use codec::decoder;
+mod symbols;
+use symbols::charset::SYMBOL_CHARSET;
+use symbols::map::SymbolMap;
+
 
 #[derive(Parser)]
 #[command(
@@ -58,7 +63,7 @@ fn main() {
                 })
                 .collect();
             let map_paths = files.iter().map(|s| s.as_str()).collect::<Vec<_>>();
-            let map = symbol_map::SymbolMap::from_jsonl_files(&map_paths);
+            let map = SymbolMap::from_jsonl_files(&map_paths);
             encoder::encode_file(input.clone(), output.clone(), &map);
         }
         Commands::Decode { input, output, map_dir } => {
@@ -78,7 +83,7 @@ fn main() {
                 .collect();
 
             let map_paths = files.iter().map(|s| s.as_str()).collect::<Vec<_>>();
-            let map = symbol_map::SymbolMap::from_jsonl_files(&map_paths);
+            let map = SymbolMap::from_jsonl_files(&map_paths);
             decoder::decode_file(input, output, &map);
         }
     }

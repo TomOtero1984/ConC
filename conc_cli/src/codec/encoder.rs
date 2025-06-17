@@ -1,6 +1,6 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
-use crate::charset::SymbolMap;
+use crate::symbols::map::SymbolMap;
 
 pub fn encode_file(input_path: String, output_path: String, map: &SymbolMap) {
     let input_file = File::open(&input_path).expect("Failed to open input file");
