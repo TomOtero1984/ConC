@@ -1,14 +1,6 @@
-use clap::{Parser, Subcommand};
 use std::fs;
-
-mod codec;
-use codec::encoder;
-use codec::decoder;
-mod symbols;
-use symbols::charset::SYMBOL_CHARSET;
-use symbols::map::SymbolMap;
-
-
+use clap::{Parser, Subcommand};
+use conc_cli::{encoder, decoder, SymbolMap};
 #[derive(Parser)]
 #[command(
     name = "conc",
