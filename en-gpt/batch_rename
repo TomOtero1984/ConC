@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Pattern to match (in this case, 'conc_*')
+pattern="conc_*"
+
+# Find all files matching the pattern and rename them
+echo "Renaming files starting with $pattern..."
+for file in $(find . -type f -name "*$pattern"); do
+  # Get the base and extension of the file
+  new_file=$(basename "$file")
+  base=${new_file%.*}
+
+  # Check if the file has the specified prefix
+  if [[ $base == *"$pattern" ]]; then
+    # Remove the prefix from the base filename
+    base=${base#$pattern}
+    sed -i s/^${pattern//_/-}/g $file
+
+    # Construct the full new filename by appending the extension
+    echo "Renaming ${new_file#*"$pattern"} to $base.${new_file##*.}"
+  fi
+done
+
+echo "Done renaming files."
