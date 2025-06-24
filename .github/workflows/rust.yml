@@ -16,7 +16,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build
+    - name: Build CLI
+      working-directory: ./conc_cli
       run: cargo build --verbose
     - name: Run tests
+      working-directory: ./conc_cli
       run: cargo test --verbose
