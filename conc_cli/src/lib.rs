@@ -1,5 +1,5 @@
-pub mod codec;
-pub use codec::{encoder, decoder};
+mod codec;
+pub use self::codec::{encoder, decoder};
 
 #[macro_use]
 pub mod symbols;

@@ -1,5 +1,3 @@
-// src/decoder.rs
-
 use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
 use crate::symbols::map::SymbolMap;
