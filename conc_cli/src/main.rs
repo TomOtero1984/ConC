@@ -1,5 +1,4 @@
 use std::fs;
-use std::process::Output;
 use clap::{Parser, Subcommand};
 use conc_cli::{encoder, decoder, SymbolMap, symbols};
 #[derive(Parser)]
