@@ -103,6 +103,22 @@ All code is being written in Rust for speed and reliability. A WASM build is pla
 
 ---
 
+# 🦇 Origin Story
+
+ConC began with a wildly impractical but captivating idea:
+
+“What if I could run a Dockerized Ollama server entirely client-side in my portfolio — using only WebAssembly?”
+
+This led to late-night explorations of WASM, Linux compilation, v86, and how virtual machines actually run in the browser. The real challenge emerged when trying to load massive source trees like binutils into ChatGPT — only to hit token limits fast.
+
+That’s when a question changed everything:
+
+“What if I compressed all of this down into something that uses fewer tokens… but still means something?”
+
+Thus ConC was born — not just as a compression tool, but as a symbolic machine language for encoding and executing meaning inside LLMs.
+
+---
+
 ## 📄 License
 
 TBD — likely MIT or Apache 2.0
@@ -111,6 +127,9 @@ TBD — likely MIT or Apache 2.0
 
 ## 🙋 About
 
-This project was built by a human who didn’t want their LLM tokens to melt.
+ConC.GPT is a symbolic language designed to compress and execute meaning inside large language models.
+It began as a token-efficient format for compact input, and has grown into a structured system for symbolic reasoning and runtime execution.
 
-Built with defiance, Unicode, and an unhealthy obsession with symbol sets.
+This project explores what happens when words are treated not just as data, but as instructions.
+
+Built with curiosity, Unicode, and a desire to make language models more expressive and controllable.
