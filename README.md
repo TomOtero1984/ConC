@@ -62,7 +62,7 @@ flowchart TD
     B[IOHandler<br/>Loads and emits data]
     C[DataTransport<br/>Internal stream/iterator control]
     D[DataSanitizer<br/>Filters & splits into valid ConC words]
-    E[Decoder<br/>Pure word-to-meaning transformation]
+    E[Codex<br/>Pure word-to-meaning transformation]
     F[Logger<br/>Side-channel diagnostics]
     G[Output / Result / Error]
 
@@ -89,25 +89,17 @@ All code is being written in Rust for speed and reliability. A WASM build is pla
 
 ---
 
-## 📁 Repository Contents
-
-	•	conc_dict_*.jsonl — Word → Symbol mappings (10,000 entries per file)
-	•	conc_dict_index_with_symbols.jsonl — Index metadata
-	•	architecture_layers.md — Runtime pipeline spec
-	•	conc101_syllabus.md — Symbolic reasoning & execution theory
-	•	conc_format_spec.md — Canonical ConC word structure
-	•	src/ — Rust CLI tools (encode, decode, inspect)
-
----
-
 ## 🧭 Roadmap
-
-	•	Encode 100k+ words with tone/presentation
-	•	Add zone-aware allocator
-	•	CLI decoder and runtime stack
-	•	Full round-trip compression → execution
-	•	WASM module for in-browser symbolic LLM
-	•	Train ConC-aware expert model
+- Refactor to layered architecture
+  - [ ] Logger
+  - [ ] IOHandler
+  - [ ] DataTransport
+  - [ ] DataSanitizer
+  - [ ] Codex
+- Add zone-aware allocator
+- CLI decoder and runtime stack
+- Full round-trip compression → execution
+- Train ConC-aware expert model
 
 ---
 
