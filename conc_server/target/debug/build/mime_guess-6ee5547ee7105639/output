@@ -1,0 +1,1 @@
+cargo:rustc-env=MIME_TYPES_GENERATED_PATH=/Users/totero/Studio/Projects/conc-gpt/conc_server/target/debug/build/mime_guess-6ee5547ee7105639/out/mime_types_generated.rs
