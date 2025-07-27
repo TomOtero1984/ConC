@@ -1,3 +1,6 @@
+pub mod logger;
+
+
 mod codec;
 pub use self::codec::{encoder, decoder};
 

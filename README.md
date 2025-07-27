@@ -111,6 +111,19 @@ All code is being written in Rust for speed and reliability. A WASM build is pla
 
 ---
 
+## 🦇 Origin Story
+
+ConC began with a wildly impractical but captivating idea:
+
+“What if I could run a Dockerized Ollama server entirely client-side in my portfolio — using only WebAssembly?”
+
+This led to late-night explorations of WASM, Linux compilation, v86, and how virtual machines actually run in the browser. The real challenge emerged when trying to load massive source trees like binutils into ChatGPT — only to hit token limits fast.
+
+That’s when a question changed everything:
+
+“What if I compressed all of this down into something that uses fewer tokens… but still means something?”
+
+Thus ConC was born — not just as a compression tool, but as a symbolic machine language for encoding and executing meaning inside LLMs.
 ## 📄 License
 
 TBD — likely MIT or Apache 2.0

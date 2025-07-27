@@ -1,6 +1,7 @@
 use std::fs;
 use clap::{Parser, Subcommand};
 use conc_cli::{encoder, decoder, SymbolMap, symbols};
+use conc_cli::logger::{info, warn, error, debug};
 #[derive(Parser)]
 #[command(
     name = "conc",
@@ -44,6 +45,10 @@ enum Commands {
         #[arg(short, long)]
         input: String,
     },
+    Interactive {
+        #[arg(short, long)
+        input String;
+    }
 }
 
 fn main() {
