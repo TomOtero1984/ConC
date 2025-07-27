@@ -7,12 +7,14 @@
   };
 
   outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.defaultSystems (system:
+    flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = import nixpkgs {
+          inherit system;
+        };
       in
       {
-        devShell = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
           buildInputs = [
             pkgs.rustup
             pkgs.cargo
@@ -26,8 +28,11 @@
           shellHook = ''
             rustup default stable
             rustup target add wasm32-unknown-unknown
-            echo "✅ ConC Nix dev environment ready!"
+            echo "✅ ConC devShell ready on ${system}"
           '';
         };
+
+        # Placeholder default package so `nix build` works
+        packages.default = pkgs.hello;
       });
 }
