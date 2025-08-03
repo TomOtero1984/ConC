@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🧠 ConC — A Symbolic Machine Language for LLMs
 
 **ConC** (Conversation Compression for LLMs) is a symbolic language for compactly encoding and executing meaning inside language models. 
