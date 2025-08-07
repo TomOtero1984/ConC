@@ -1,6 +1,6 @@
 use std::fs;
 use std::fs::File;
-use std::io::{self, BufReader, BufWriter, Read, Write};
+use std::io::{self, BufReader, BufWriter, BufRead, Read, Write};
 
 pub fn read_input(path: &str) -> io::Result<String> {
     if path == "-" {
@@ -20,12 +20,37 @@ pub fn write_output(path: &str, content: &str) -> io::Result<()> {
     }
 }
 
-pub fn make_reader(path: &str) -> io::Result<Box<dyn Read>> {
-    if path == "-" {
-        Ok(Box::new(io::stdin()))
+pub fn read_lines(path: &str)
+                         -> io::Result<impl Iterator<Item = io::Result<String>>> {
+
+    let reader: Box<dyn Read> = if path == "-" {
+        Box::new(io::stdin())
     } else {
-        Ok(Box::new(File::open(path)?))
+        Box::new(File::open(path)?)
+    };
+
+    Ok(BufReader::new(reader).lines())
+}
+
+pub fn write_lines<I, S>(path: &str, lines: I) -> io::Result<()>
+where
+    I: IntoIterator<Item = S>,
+    S: AsRef<str>,
+{
+    let writer: Box<dyn Write> = if path == "-" {
+        Box::new(io::stdout())
+    } else {
+        Box::new(File::create(path)?)
+    };
+
+    let mut writer = BufWriter::new(writer);
+
+    for line in lines {
+        writeln!(writer, "{}", line.as_ref())?;
     }
+
+    writer.flush()?;
+    Ok(())
 }
 
 pub fn make_writer(path: &str) -> io::Result<Box<dyn Write>> {

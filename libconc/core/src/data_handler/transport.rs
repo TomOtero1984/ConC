@@ -7,3 +7,5 @@
 // •	If you ever need to buffer, queue, or send data between threads/tasks.
 // 4.	Versioning and evolution
 // •	If you expect the structure of data to change and want to isolate compatibility logic.
+
+use std::io::BufRead;

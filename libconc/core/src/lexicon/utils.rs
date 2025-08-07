@@ -2,23 +2,24 @@ use serde_json::json;
 use serde::Deserialize;
 use std::io::{BufRead, BufReader, BufWriter, Write};
 use std::fs::File;
+use crate::lexicon::word_map::Index;
 use crate::data_handler::io;
 
 
 static CHARSET: [&str; 4096] = charset!();
 
-pub fn generate_word_map(input_path: &str, output_path: &str) {
+pub fn generate_word_map_jsonl(input_path: &str, output_path: &str) {
     let reader = io::make_buf_reader(input_path).unwrap();
     let mut writer = io::make_buf_writer(output_path).unwrap();
 
-    let mut index: u32 = 0;
+    let mut index: Index = 0;
 
     for line in reader.lines() {
         if let Ok(line) = line {
             let base_word = convert_to_base4096(index);
             let json = json!({
                 "index": index,
-                "native": line.trim(),
+                "natural": line.trim(),
                 "conc": base_word,
             });
             
@@ -34,7 +35,7 @@ pub fn generate_word_map(input_path: &str, output_path: &str) {
     writer.flush().expect("Failed to flush output");
 }
 
-pub fn convert_to_base4096(num: u32) -> String {
+pub fn convert_to_base4096(num: Index) -> String {
     let base = 4096;
     let low_idx = num % base;
     let high_idx = num / base;
@@ -45,10 +46,17 @@ pub fn convert_to_base4096(num: u32) -> String {
     format!("{}{}", high_char, low_char)
 }
 
+pub fn convert_from_base4096(word: &str) -> Index {
+    let low_char = word.chars().nth(0).unwrap();
+    let high_char = word.chars().nth(1).unwrap();
+
+    0 // [TODO] Update this to be... an actual function...
+}
+
 #[derive(Debug, Deserialize)]
 pub struct ConCEntry {
     pub index: u32,
-    pub native: String,
+    pub natural: String,
     pub conc: String,
 }
 
