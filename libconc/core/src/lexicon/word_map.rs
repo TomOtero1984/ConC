@@ -85,7 +85,7 @@ impl WordMap {
             let index = index as Index;
             let conc_word = ConcWord {
                 index,
-                text: word.clone(),
+                text: convert_to_base4096(index),
                 language: WordType::Conc,
             };
             let natural_word = NaturalWord {

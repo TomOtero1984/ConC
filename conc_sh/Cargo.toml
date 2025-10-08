@@ -5,6 +5,7 @@ edition = "2021"
 
 
 [lib]
+name = "conc_sh"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
