@@ -87,7 +87,7 @@ impl WordMap {
             };
             let natural_word = NaturalWord {
                 index,
-                text: word.clone(),
+                text: word.to_lowercase(),
                 language: WordType::Natural,
             };
             self.conc_hash.insert(conc_word.text.clone(), index);
