@@ -3,6 +3,13 @@ name = "conc_cli"
 version = "0.1.0"
 edition = "2024"
 
+build = "build.rs"
+
+[profile.release]
+panic = "abort"
+lto = true
+strip = true
+
 [dependencies]
 clap = { version = "4", features = ["derive"] }
 serde = { version = "1.0.219", features = ["derive"] }
