@@ -1,10 +1,9 @@
-use serde_json::json;
-use serde::Deserialize;
-use std::io::{BufRead, BufReader, BufWriter, Write};
-use std::fs::File;
-use crate::lexicon::word_map::Index;
 use crate::data_handler::io;
-
+use crate::lexicon::word_map::Index;
+use serde::Deserialize;
+use serde_json::json;
+use std::fs::File;
+use std::io::{BufRead, BufReader, Write};
 
 static CHARSET: [&str; 4096] = charset!();
 
@@ -22,7 +21,7 @@ pub fn generate_word_map_jsonl(input_path: &str, output_path: &str) {
                 "natural": line.trim(),
                 "conc": base_word,
             });
-            
+
             if let Err(e) = serde_json::from_value::<ConCEntry>(json.clone()) {
                 eprintln!("Skipping invalid entry: {} | Error: {}", line.trim(), e);
                 continue;
@@ -39,7 +38,7 @@ pub fn convert_to_base4096(num: Index) -> String {
     let base = 4096;
     let low_idx = num % base;
     let high_idx = num / base;
-    
+
     let low_char = CHARSET[low_idx as usize];
     let high_char = CHARSET[high_idx as usize];
 
@@ -49,7 +48,7 @@ pub fn convert_to_base4096(num: Index) -> String {
 pub fn convert_from_base4096(word: &str) -> Index {
     let low_char = word.chars().nth(0).unwrap();
     let high_char = word.chars().nth(1).unwrap();
-
+    todo!();
     0 // [TODO] Update this to be... an actual function...
 }
 
@@ -70,7 +69,10 @@ pub fn validate_jsonl(path: &str) {
             Ok(ref l) => match serde_json::from_str::<ConCEntry>(l) {
                 Ok(_) => {} // Valid
                 Err(e) => {
-                    eprintln!("Line {}: Invalid JSON entry\n  {}\n  Error: {}", line_num, l, e);
+                    eprintln!(
+                        "Line {}: Invalid JSON entry\n  {}\n  Error: {}",
+                        line_num, l, e
+                    );
                 }
             },
             Err(e) => {
@@ -80,3 +82,4 @@ pub fn validate_jsonl(path: &str) {
         line_num += 1;
     }
 }
+
