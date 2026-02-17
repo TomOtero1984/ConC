@@ -2,3 +2,6 @@
 .idea
 *.lock
 target
+.backups
+.codelite
+*.workspace

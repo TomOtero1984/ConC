@@ -84,41 +84,6 @@ fn main() {
         }
     }
 
-    // match cli.command {
-    //     Commands::SearchByIndex { index } => {
-    //         get_word(&wmap, index).unwrap_or_else(|_e| eprintln!("Index {} not found.", index));
-    //     }
-
-    //     Commands::SearchByWord { word, word_type } => {
-    //         let maybe_index: Result<usize, String> = match word_type.as_str() {
-    //             "conc" => {
-    //                 println!("Searching by conc word");
-    //                 wmap.conc_hash
-    //                     .get(&word)
-    //                     .copied() // Option<&usize> → Option<usize>
-    //                     .ok_or_else(|| format!("Word {} not found.", word))
-    //             }
-    //             "natural" => {
-    //                 println!("Searching by natural word");
-    //                 wmap.natural_hash
-    //                     .get(&word)
-    //                     .copied()
-    //                     .ok_or_else(|| format!("Word {} not found.", word))
-    //             }
-    //             _ => Err(format!("Unknown word type: {}", word_type)),
-    //         };
-
-    //         match maybe_index {
-    //             Ok(index) => {
-    //                 get_word(&wmap, index)
-    //                     .unwrap_or_else(|_e| eprintln!("Word {} not found.", word));
-    //             }
-    //             Err(e) => eprintln!("{}", e),
-    //         }
-    //     }
-    // }
-}
-
 fn get_word_by_index(wmap: &WordMap, index: usize) -> Result<(), String> {
     get_word(&wmap, index).unwrap_or_else(|_e| eprintln!("Index {} not found.", index));
     Ok(())
