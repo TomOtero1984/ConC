@@ -83,6 +83,7 @@ fn main() {
             std::process::exit(2);
         }
     }
+}
 
 fn get_word_by_index(wmap: &WordMap, index: usize) -> Result<(), String> {
     get_word(&wmap, index).unwrap_or_else(|_e| eprintln!("Index {} not found.", index));
