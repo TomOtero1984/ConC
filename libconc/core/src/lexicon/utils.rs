@@ -46,8 +46,8 @@ pub fn convert_to_base4096(num: Index) -> String {
 }
 
 pub fn convert_from_base4096(word: &str) -> Index {
-    let low_char = word.chars().nth(0).unwrap();
-    let high_char = word.chars().nth(1).unwrap();
+    let _low_char = word.chars().nth(0).unwrap();
+    let _high_char = word.chars().nth(1).unwrap();
     todo!();
     0 // [TODO] Update this to be... an actual function...
 }
