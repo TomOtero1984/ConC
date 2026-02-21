@@ -51,45 +51,6 @@ This corresponds to the JSON entry:
 Each ConC word is compact, symbolic, and designed for fast runtime decoding or execution.
 
 
----
-
-## 🧱 Runtime Architecture
-
-ConC’s runtime is designed using first principles and strict layer separation:
-
-``` mermaid
-flowchart TD
-    A[User Input<br/>File / String / CLI]
-    B[IOHandler<br/>Loads and emits data]
-    C[DataTransport<br/>Internal stream/iterator control]
-    D[DataSanitizer<br/>Filters & splits into valid ConC words]
-    E[Decoder<br/>Pure word-to-meaning transformation]
-    F[Logger<br/>Side-channel diagnostics]
-    G[Output / Result / Error]
-
-    A --> B --> C --> D --> E --> G
-    E --> F
-```
-
-Each layer is testable, replaceable, and symbolically pure.
-
----
-
-## 🧰 Tooling & Implementation
-
-Tool / Feature	Status
-Symbol dictionary	✅ Complete (JSONL format)
-Base word encoding	✅ Stable, zone-aware
-CLI encoder (Rust)	✅ Working
-Decoder runtime	🛠 In progress
-Presentation/tone logic	✅ Implemented in format
-Zone partitioning	🛠 Design in progress
-WASM integration	🛠 Planned
-
-All code is being written in Rust for speed and reliability. A WASM build is planned for browser-based execution.
-
----
-
 ## 🧱 Runtime Architecture
 
 ConC’s runtime is designed using first principles and strict layer separation:
